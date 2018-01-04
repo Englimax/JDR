@@ -1,5 +1,4 @@
 from django.db import models
-from .model_choices import *
 default_image_src = "no_image.png"
 
 

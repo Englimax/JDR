@@ -1,8 +1,46 @@
 from django.db import models
-from django.contrib.auth.models import User
-from .model_choices import *
+from django.contrib.auth.models import Attribute
+from django.contrib.auth.models import SkillInventory
+from django.contrib.auth.models import ItemInventory
+from django.contrib.auth.models import VariousModificator
+from django.contrib.auth.models import SpellInventory
+from django.contrib.auth.models import Campaign
+from django.contrib.auth.models import Player
+from .model_choices import order
+from .model_choices import classes
+from .model_choices import races
+from .model_choices import alignment
+from .model_choices import size
+
 default_image_src = "no_image.png"
 
 
-class Player(User):
-    pass
+class PlayedCharacter(models.Model):
+    name = models.CharField(max_length=50)
+    surname = models.CharField(max_length=50)
+    alias = models.CharField(max_length=50)
+    campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)
+    
+    player = models.ForeignKey(Player, on_delete=models.CASCADE)
+    race = models.IntegerField(choices=races)
+    classes = models.IntegerField(choices=classes)
+    order = models.IntegerField(choices=order)
+    manich = models.IntegerField(choices=alignment)
+    god = models.CharField(max_length=30)
+    
+    level = models.IntegerField(default=1)
+    xp = models.IntegerField(default=0)
+    size = models.CharField(choices=size, max_length=30)
+    age = models.IntegerField(default=18)
+    gender = models.CharField(choices=(("1", "Homme"), ("2", "Femme")), max_length=30)
+    
+    height = models.IntegerField(default=100)
+    weight = models.IntegerField(default=75)
+    eyes = models.CharField(max_length=50)
+    hair = models.CharField(max_length=50)
+    
+    attributes = models.ForeignKey(Attribute, on_delete=models.CASCADE)
+    skills = models.ForeignKey(SkillInventory, on_delete=models.CASCADE)
+    inventory = models.ForeignKey(ItemInventory, on_delete=models.CASCADE)
+    various_mod = models.ForeignKey(VariousModificator, on_delete=models.CASCADE)
+    spells = models.ForeignKey(SpellInventory, on_delete=models.CASCADE)

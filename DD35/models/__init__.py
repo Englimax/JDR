@@ -1,13 +1,17 @@
-from django.db import models
-from .model_choices import size
+from .Campaign import Campaign
+from .BaseItem import BaseItem
+from .Attribute import Attribute
+from .SkillInventory import SkillInventory
+from .PlayedCharacter import PlayedCharacter
+from .VariousModificator import VariousModificator
+from .Dons import Dons
+from .Spell import Spell
+from .SpellUsage import SpellUsage
+from .SpellInventory import SpellInventory
 from .Item import Item
+from .Pouch import Pouch
+from .ItemInventory import ItemInventory
+from .Weapon import Weapon
+from .Armor import Armor
+from .Player import Player
 
-
-class Armor(Item):
-    is_master = models.BooleanField(default=False)
-    size = models.CharField(choices=size, max_length=30)
-    armor_bonus = models.IntegerField(default=1)
-    dext_max = models.IntegerField(default=1)
-    armor_malus = models.IntegerField(default=1)
-    spell_fail = models.FloatField(default=0.1)
-    speed = models.IntegerField(default=1)

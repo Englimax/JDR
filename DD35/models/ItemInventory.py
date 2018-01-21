@@ -1,7 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import Pouch
-from django.contrib.auth.models import Item
-default_image_src = "no_image.png"
+from .Pouch import Pouch
+from .Item import Item
 
 
 class ItemInventory(models.Model):

@@ -1,6 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import Spell
-default_image_src = "no_image.png"
+from .Spell import Spell
 
 
 class SpellUsage(models.Model):

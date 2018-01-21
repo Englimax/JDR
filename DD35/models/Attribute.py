@@ -1,5 +1,4 @@
 from django.db import models
-default_image_src = "no_image.png"
 
 
 class Attribute(models.Model):
@@ -20,3 +19,24 @@ class Attribute(models.Model):
     vigueur = models.IntegerField(default=0)
     volonte = models.IntegerField(default=0)
     poids_transp = models.FloatField(default=17.5)
+
+    def jsonified(self):
+        return {
+            "force": self.force,
+            "dex": self.dex,
+            "con": self.con,
+            "intell": self.intell,
+            "sag": self.sag,
+            "cha": self.cha,
+            "pv": self.pv,
+            "pv_temp": self.pv_temp,
+            "dmg_reduction": self.dmg_reduction,
+            "ca": self.ca,
+            "deplacement": self.deplacement,
+            "initiative": self.initiative,
+            "base_atk_bonus": self.base_atk_bonus,
+            "reflexes": self.reflexes,
+            "vigueur": self.vigueur,
+            "volonte": self.volonte,
+            "poids_transp": self.poids_transp,
+        }

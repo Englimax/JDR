@@ -1,18 +1,16 @@
 from django.db import models
-from django.contrib.auth.models import Attribute
-from django.contrib.auth.models import SkillInventory
-from django.contrib.auth.models import ItemInventory
-from django.contrib.auth.models import VariousModificator
-from django.contrib.auth.models import SpellInventory
-from django.contrib.auth.models import Campaign
-from django.contrib.auth.models import Player
+from .Attribute import Attribute
+from .SkillInventory import SkillInventory
+from .ItemInventory import ItemInventory
+from .VariousModificator import VariousModificator
+from .SpellInventory import SpellInventory
+from .Campaign import Campaign
+from .Player import Player
 from .model_choices import order
 from .model_choices import classes
 from .model_choices import races
 from .model_choices import alignment
 from .model_choices import size
-
-default_image_src = "no_image.png"
 
 
 class PlayedCharacter(models.Model):

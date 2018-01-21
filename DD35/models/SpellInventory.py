@@ -1,6 +1,5 @@
 from django.db import models
-from DD35.models import SpellUsage
-default_image_src = "no_image.png"
+from .SpellUsage import SpellUsage
 
 
 class SpellInventory(models.Model):

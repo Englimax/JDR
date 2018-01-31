@@ -1,7 +1,6 @@
 from django.db import models
 from .model_choices import size
-from django.contrib.auth.models import Item
-default_image_src = "no_image.png"
+from .Item import Item
 
 
 class Armor(Item):

@@ -1,5 +1,4 @@
 from django.db import models
-default_image_src = "no_image.png"
 
 
 class Campaign(models.Model):

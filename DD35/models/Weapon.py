@@ -1,7 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import Item
+from .Item import Item
 from .model_choices import size
-default_image_src = "no_image.png"
 
 
 class Weapon(Item):

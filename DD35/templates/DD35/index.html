@@ -1,12 +1,25 @@
-{% if Player_list %}
-    <ul>
-    {% for player in Player_list %}
-        <li><a href="/DD35/{{ player_list.id }}/">{{ player_list.get_username() }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>Aucun joueur disponible.</p>
-{% endif %}
+{% load static %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'DD35/style.css' %}" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+<input type="hidden" id="user" name="username" value="{{ user.username }}">
+
+<div style="width:70px;height:30px;float:left;margin:10px 0px 0px 10px;overflow:hidden;background-color:rgba(255, 255, 255, 0.5)">
+	<header>
+      {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">logout</a>
+      {% else %}
+        <a href="{% url 'login' %}">login</a> / <a href="{% url 'signup' %}">signup</a>
+      {% endif %}
+      <hr>
+    </header>
+</div>
 
 
 
@@ -20,3 +33,346 @@
 
 
 
+
+
+
+		<!--faire une page pour la liste des personnages d'un user, une page pour un personnage : une page par catégorie affichée à droite-->
+
+
+<lj-raw><center><lj-cut text="LJCUT TEXT">
+<!-- MASTER --><div style="float:left;width:950px;height:950px;background:url('{% static 'DD35/images/leftbgrd.bmp' %}');font-family:andale mono;font-size:14px;color:#fff;box-shadow:0px 0px 10px 1px #000,0px 0px 5px 5px #92fffa;margin-top:0px;"><!-- CONTAINER --><div style="width:600px;height:800px;float:left;margin:10px 0px 0px 10px;overflow:hidden;">
+
+<!-- 1 --><a name="1"></a><div style="width:550px;height:800px;padding:10px 10px 0px;"><!-- SCROLLER TOP BORDER --><div style="width:775px;height:0px;border-top:2px solid #92fffa;float:left;margin-left:10px;box-shadow:0px 0px 5px 1px #fff;"><!-- CLOSE SCROLLER TOP BORDER --></div><!-- SCROLLER BOX --><div style="width:520px;height:775px;overflow:auto;padding:0px 10px;"><!-- CONTENT --><div style="width:500px;min-height:100%;padding:10px 10px 45px;border:2px solid #92fffa;border-top:none;box-shadow:0px 0px 5px 1px #fff;background:rgba(24,32,45,0.6);z-index:1;position:relative;">
+
+
+<!-- PORTRAIT --><img src= "{% static 'DD35/images/barbare.jpg' %}" style="width:150px;height:200px;float:right;margin:10px;">
+
+
+<div style="width:260px;height:200px;margin:10px;float:left;text-transform:uppercase;text-align:left;"><p style="text-align:center;font-size:35px;">
+
+
+	{{ character.name }} {{ character.surname }}
+
+</p><p style="font-size:25px;line-height:14px;">
+
+	{{ character.alias }} {{ character.player.username }}
+
+</p></div><!-- TABLE --><table style="clear:both;width:450px;color:#fff;font-size:14px;font-variant:small-caps;letter-spacing:1px;" cellspacing="10px"><tr><td style="width:150px;text-align:center;padding-right:5px;box-shadow:0px 0px 2px 1px #92fffa;" valign="top">Attributs</td><td style="box-shadow:0px 0px 2px 1px #92fffa;">
+
+
+{% for key, value in attributes.items %}
+
+    </td></tr><tr style=><td style="width:150px;text-align:center;padding-right:5px;box-shadow:0px 0px 2px 1px #92fffa;" valign="top">
+
+		{{ key }} : </br>
+		<!--<figure style="float:left;margin:0px 6px 10px 0px;text-align:center;">
+			<img src="{% static 'DD35/images/no_image.png' %}" style="width:150px;height:200px;float:right;margin:10px;" alt="No image :("/><figcaption>No image</figcaption></figure>
+-->
+	</td><td style="box-shadow:0px 0px 2px 1px #92fffa;text-align:center;">
+        {{ value }}
+
+{% endfor %}
+
+
+<!--
+
+
+
+    </td></tr><tr style="background:rgba(0,170,185,0.4);"><td style="width:150px;text-align:center;padding-right:5px;box-shadow:0px 0px 2px 1px #92fffa;" valign="top">
+
+		{{ armor.name }}</br>
+		<figure style="float:left;margin:0px 6px 10px 0px;text-align:center;">
+			<img src="{% static 'DD35/images/no_image.png' %}" style="width:150px;height:200px;float:right;margin:10px;" alt="No image :("/><figcaption>No image</figcaption></figure>
+
+	</td><td style="box-shadow:0px 0px 2px 1px #92fffa;">
+
+    <li>Vitesse : {{armor.speed}}<li/>
+	<li>Taille : {{armor.size}}<li/>
+	<li>Dextérité max : {{armor.dext_max}}<li/>
+	<li>Bonus d'armure : {{armor.armor_bonus}}<li/>
+	<li>Malus d'armure : {{armor.armor_malus}}<li/>
+	<li>Echec de sorts : {{armor.spell_fail}}<li/>
+
+
+-->
+
+
+<!-- CLOSE TABLE --></td></tr></table><!-- CLOSE CONTENT --></div><!-- CLOSE SCROLLER --></div><!-- BOTTOM BANNER --><div style="width:506px;height:16px;background:linear-gradient(45deg,#094456,rgba(46, 111, 149, 1) 60%);border:2px solid #92fffa;border-radius:5px;border-top-right-radius:0px;margin:-7px 0px 0px;z-index:2;position:relative;"></div><!-- CORNER --><div style="width:50px;height:50px;background:transparent;margin:-91px 0px 0px 163px;z-index:2;position:relative;"><!-- DIAGONAL --><div style="width:63.5px;height:2px;transform:rotate(135deg);background:#92fffa;margin:48px 0px 0px 0px;"></div><!-- COVERUP --><div style="width:0px;height:0px;border-bottom:48px solid #2e6f95;border-left:48px solid transparent;background:transparent;margin:-18px 0px 0px 1px;"></div><!-- CLOSE CORNER --></div><!-- LABEL --><div style="width:147px;height:48px;background:linear-gradient(-165deg,#60a0c4,#2e6f95 50%);margin:-75px 0px 0px 361px;border-top:2px solid #92fffa;border-right:2px solid #92fffa;border-top-right-radius:5px;border-top-left-radius:10px;z-index:2;position:relative;"><!-- LABEL TEXT --><div style="width:148px;height:25px;margin:10px 0px 0px;font-size:14px;line-height:26px;font-variant:small-caps;z-index:2;position:relative;">[ Attributs ]<!-- CLOSE LABEL TEXT --></div><!-- CLOSE LABEL --></div><!-- CLOSE 1 --></div>
+
+
+
+<!-- 2 --><a name="2"></a><div style="width:550px;height:800px;padding:10px 10px 0px;"><!-- SCROLLER TOP BORDER --><div style="width:475px;height:0px;border-top:2px solid #92fffa;float:left;margin-left:10px;box-shadow:0px 0px 5px 1px #fff;"><!-- CLOSE SCROLLER TOP BORDER --></div><!-- SCROLLER BOX --><div style="width:490px;height:775px;overflow:auto;padding:0px 10px;"><!-- CONTENT --><div style="width:451px;min-height:100%;padding:10px 10px 45px;border:2px solid #92fffa;border-top:none;box-shadow:0px 0px 5px 1px #fff;background:rgba(24,32,45,0.6);z-index:1;position:relative;text-align:left;">
+
+<!-- TABLE --><table style="clear:both;width:450px;color:#fff;font-size:14px;font-variant:small-caps;letter-spacing:1px;" cellspacing="10px"><tr><td style="width:150px;text-align:center;padding-right:5px;box-shadow:0px 0px 2px 1px #92fffa;" valign="top">Objet</td><td style="box-shadow:0px 0px 2px 1px #92fffa;">
+
+	<p style="align:center"> Poids </p>
+
+{% for item in character.inventory.items.all %}
+
+    </td></tr><tr style=><td style="width:150px;text-align:center;padding-right:5px;box-shadow:0px 0px 2px 1px #92fffa;" valign="top">
+
+	<a href="#">{{ item.name }}</a>: </br>
+		<!--<figure style="float:left;margin:0px 6px 10px 0px;text-align:center;">
+			<img src="{% static 'DD35/images/no_image.png' %}" style="width:150px;height:200px;float:right;margin:10px;" alt="No image :("/><figcaption>No image</figcaption></figure>
+-->
+	</td><td style="box-shadow:0px 0px 2px 1px #92fffa;text-align:center;">
+        {{ item.weight }}
+
+{% endfor %}
+
+<!-- CLOSE TABLE --></td></tr></table><!-- CLOSE CONTENT --></div><!-- CLOSE SCROLLER --></div><!-- BOTTOM BANNER --><div style="width:506px;height:16px;background:linear-gradient(45deg,#094456,rgba(46, 111, 149, 1) 60%);border:2px solid #92fffa;border-radius:5px;border-top-right-radius:0px;margin:-7px 0px 0px;z-index:2;position:relative;"></div><!-- CORNER --><div style="width:50px;height:50px;background:transparent;margin:-91px 0px 0px 163px;z-index:2;position:relative;"><!-- DIAGONAL --><div style="width:63.5px;height:2px;transform:rotate(135deg);background:#92fffa;margin:48px 0px 0px 0px;"></div><!-- COVERUP --><div style="width:0px;height:0px;border-bottom:48px solid #2e6f95;border-left:48px solid transparent;background:transparent;margin:-18px 0px 0px 1px;"></div><!-- CLOSE CORNER --></div><!-- LABEL --><div style="width:147px;height:48px;background:linear-gradient(-165deg,#60a0c4,#2e6f95 50%);margin:-75px 0px 0px 361px;border-top:2px solid #92fffa;border-right:2px solid #92fffa;border-top-right-radius:5px;border-top-left-radius:10px;z-index:2;position:relative;"><!-- LABEL TEXT --><div style="width:148px;height:25px;margin:10px 0px 0px;font-size:14px;line-height:26px;font-variant:small-caps;z-index:2;position:relative;">[ History ]<!-- CLOSE LABEL TEXT --></div><!-- CLOSE LABEL --></div><!-- CLOSE 2 --></div>
+
+
+
+<!-- 3 --><a name="3"></a><div style="width:510px;height:800px;padding:10px 10px 0px;"><!-- SCROLLER TOP BORDER --><div style="width:475px;height:0px;border-top:2px solid #92fffa;float:left;margin-left:10px;box-shadow:0px 0px 5px 1px #fff;"><!-- CLOSE SCROLLER TOP BORDER --></div><!-- SCROLLER BOX --><div style="width:490px;height:775px;overflow:auto;padding:0px 10px;"><!-- CONTENT --><div style="width:451px;min-height:100%;padding:10px 10px 45px;border:2px solid #92fffa;border-top:none;box-shadow:0px 0px 5px 1px #fff;background:rgba(24,32,45,0.6);z-index:1;position:relative;text-align:left;">
+
+<span style="font-size:16px;font-weight:bold;font-variant:small-caps;letter-spacing:1px;">
+	Special Skill
+</span>
+	Description<p>
+
+<span style="font-size:16px;font-weight:bold;font-variant:small-caps;letter-spacing:1px;">
+	Racial Ability
+</span>
+	Description<p>
+
+<span style="font-size:16px;font-weight:bold;font-variant:small-caps;letter-spacing:1px;">
+	Hidden Talent
+</span>
+	Description<p>
+
+<span style="font-size:16px;font-weight:bold;font-variant:small-caps;letter-spacing:1px;">
+	Skill
+</span>
+	Description<p>
+
+<span style="font-size:16px;font-weight:bold;font-variant:small-caps;letter-spacing:1px;">
+	Skill
+</span>
+	Description<p>
+
+<span style="font-size:16px;font-weight:bold;font-variant:small-caps;letter-spacing:1px;">
+	Skill
+</span>
+	Description<p>
+
+<!-- CLOSE CONTENT --></div><!-- CLOSE SCROLLER --></div><!-- BOTTOM BANNER --><div style="width:506px;height:16px;background:linear-gradient(45deg,#094456,rgba(46, 111, 149, 1) 60%);border:2px solid #92fffa;border-radius:5px;border-top-right-radius:0px;margin:-7px 0px 0px;z-index:2;position:relative;"></div><!-- CORNER --><div style="width:50px;height:50px;background:transparent;margin:-91px 0px 0px 163px;z-index:2;position:relative;"><!-- DIAGONAL --><div style="width:63.5px;height:2px;transform:rotate(135deg);background:#92fffa;margin:48px 0px 0px 0px;"></div><!-- COVERUP --><div style="width:0px;height:0px;border-bottom:48px solid #2e6f95;border-left:48px solid transparent;background:transparent;margin:-18px 0px 0px 1px;"></div><!-- CLOSE CORNER --></div><!-- LABEL --><div style="width:147px;height:48px;background:linear-gradient(-165deg,#60a0c4,#2e6f95 50%);margin:-75px 0px 0px 361px;border-top:2px solid #92fffa;border-right:2px solid #92fffa;border-top-right-radius:5px;border-top-left-radius:10px;z-index:2;position:relative;"><!-- LABEL TEXT --><div style="width:148px;height:25px;margin:10px 0px 0px;font-size:14px;line-height:26px;font-variant:small-caps;z-index:2;position:relative;">[ Skills ]<!-- CLOSE LABEL TEXT --></div><!-- CLOSE LABEL --></div><!-- CLOSE 3 --></div>
+
+
+
+<!-- 4 --><a name="4"></a><div style="width:510px;height:800px;padding:10px 10px 0px;"><!-- SCROLLER TOP BORDER --><div style="width:475px;height:0px;border-top:2px solid #92fffa;float:left;margin-left:10px;box-shadow:0px 0px 5px 1px #fff;"><!-- CLOSE SCROLLER TOP BORDER --></div><!-- SCROLLER BOX --><div style="width:490px;height:775px;overflow:auto;padding:0px 10px;"><!-- CONTENT --><div style="width:451px;min-height:100%;padding:10px 10px 45px;border:2px solid #92fffa;border-top:none;box-shadow:0px 0px 5px 1px #fff;background:rgba(24,32,45,0.6);z-index:1;position:relative;text-align:left;">
+
+	General description/overview of your character's personality in paragraph form.<p><hr style="color:#92fffa;">
+
+<span style="font-size:16px;font-weight:bold;font-variant:small-caps;letter-spacing:1px;">
+	Strength
+</span>
+	Description<p>
+
+<span style="font-size:16px;font-weight:bold;font-variant:small-caps;letter-spacing:1px;">
+	Weakness
+</span>
+	Description<p>
+
+<span style="font-size:16px;font-weight:bold;font-variant:small-caps;letter-spacing:1px;">
+	Quirk
+</span>
+	Description<p>
+
+<span style="font-size:16px;font-weight:bold;font-variant:small-caps;letter-spacing:1px;">
+	Trait
+</span>
+	Description<p>
+
+<span style="font-size:16px;font-weight:bold;font-variant:small-caps;letter-spacing:1px;">
+	Trait
+</span>
+	Description<p>
+
+<span style="font-size:16px;font-weight:bold;font-variant:small-caps;letter-spacing:1px;">
+	Trait
+</span>
+	Description<p>
+
+<!-- CLOSE CONTENT --></div><!-- CLOSE SCROLLER --></div><!-- BOTTOM BANNER --><div style="width:506px;height:16px;background:linear-gradient(45deg,#094456,rgba(46, 111, 149, 1) 60%);border:2px solid #92fffa;border-radius:5px;border-top-right-radius:0px;margin:-7px 0px 0px;z-index:2;position:relative;"></div><!-- CORNER --><div style="width:50px;height:50px;background:transparent;margin:-91px 0px 0px 163px;z-index:2;position:relative;"><!-- DIAGONAL --><div style="width:63.5px;height:2px;transform:rotate(135deg);background:#92fffa;margin:48px 0px 0px 0px;"></div><!-- COVERUP --><div style="width:0px;height:0px;border-bottom:48px solid #2e6f95;border-left:48px solid transparent;background:transparent;margin:-18px 0px 0px 1px;"></div><!-- CLOSE CORNER --></div><!-- LABEL --><div style="width:147px;height:48px;background:linear-gradient(-165deg,#60a0c4,#2e6f95 50%);margin:-75px 0px 0px 361px;border-top:2px solid #92fffa;border-right:2px solid #92fffa;border-top-right-radius:5px;border-top-left-radius:10px;z-index:2;position:relative;"><!-- LABEL TEXT --><div style="width:148px;height:25px;margin:10px 0px 0px;font-size:14px;line-height:26px;font-variant:small-caps;z-index:2;position:relative;">[ Profile ]<!-- CLOSE LABEL TEXT --></div><!-- CLOSE LABEL --></div><!-- CLOSE 4 --></div>
+
+
+
+<!-- 5 --><a name="5"></a><div style="width:510px;height:800px;padding:10px 10px 0px;"><!-- SCROLLER TOP BORDER --><div style="width:475px;height:0px;border-top:2px solid #92fffa;float:left;margin-left:10px;box-shadow:0px 0px 5px 1px #fff;"><!-- CLOSE SCROLLER TOP BORDER --></div><!-- SCROLLER BOX --><div style="width:490px;height:775px;overflow:auto;padding:0px 10px;"><!-- CONTENT --><div style="width:451px;min-height:100%;padding:10px 10px 45px;border:2px solid #92fffa;border-top:none;box-shadow:0px 0px 5px 1px #fff;background:rgba(24,32,45,0.6);z-index:1;position:relative;font-size:13px;text-align:left;">
+
+	Here's a space for additional notes, or even actual 'logs' if you want. You could even use it as a thread tracker. The icons below the horizontal line are meant to be used to keep track of your character's relationships.
+
+<!-- ROW 1 --><hr style="color:#92fffa;"><p style="text-align:center;">[ Hover over pictures for description of relationship. ]</p>
+
+	<figure style="float:left;margin:0px 6px 10px 0px;text-align:center;"><a href="JOURNALURL"><img src="http://i.imgur.com/gRsvuey.jpg" title="BESTIE" style="width:100px;height:100px;outline:1px solid #92fffa;border:4px solid transparent;"></a><figcaption>Name</figcaption></figure>
+	<figure style="float:left;margin:0px 6px 10px 0px;text-align:center;"><a href="JOURNALURL"><img src="http://i.imgur.com/gRsvuey.jpg" title="SECRET CRUSH" style="width:100px;height:100px;outline:1px solid #92fffa;border:4px solid transparent;"></a><figcaption>Name</figcaption></figure>
+	<figure style="float:left;margin:0px 6px 10px 0px;text-align:center;"><a href="JOURNALURL"><img src="http://i.imgur.com/gRsvuey.jpg" title="RELATIONSHIP" style="width:100px;height:100px;outline:1px solid #92fffa;border:4px solid transparent;"></a><figcaption>Name</figcaption></figure>
+	<figure style="float:left;margin:0px 0px 10px 0px;text-align:center;"><a href="JOURNALURL"><img src="http://i.imgur.com/gRsvuey.jpg" title="RELATIONSHIP" style="width:100px;height:100px;outline:1px solid #92fffa;border:4px solid transparent;"></a><figcaption>Name</figcaption></figure>
+
+<!-- ROW 2 -->
+
+	<figure style="float:left;margin:0px 6px 10px 0px;text-align:center;"><a href="JOURNALURL"><img src="http://i.imgur.com/gRsvuey.jpg" title="RELATIONSHIP" style="width:100px;height:100px;outline:1px solid #92fffa;border:4px solid transparent;"></a><figcaption>Name</figcaption></figure>
+	<figure style="float:left;margin:0px 6px 10px 0px;text-align:center;"><a href="JOURNALURL"><img src="http://i.imgur.com/gRsvuey.jpg" title="RELATIONSHIP" style="width:100px;height:100px;outline:1px solid #92fffa;border:4px solid transparent;"></a><figcaption>Name</figcaption></figure>
+	<figure style="float:left;margin:0px 6px 10px 0px;text-align:center;"><a href="JOURNALURL"><img src="http://i.imgur.com/gRsvuey.jpg" title="RELATIONSHIP" style="width:100px;height:100px;outline:1px solid #92fffa;border:4px solid transparent;"></a><figcaption>Name</figcaption></figure>
+	<figure style="float:left;margin:0px 0px 10px 0px;text-align:center;"><a href="JOURNALURL"><img src="http://i.imgur.com/gRsvuey.jpg" title="RELATIONSHIP" style="width:100px;height:100px;outline:1px solid #92fffa;border:4px solid transparent;"></a><figcaption>Name</figcaption></figure>
+
+<!-- CLOSE ROWS --><!-- CLOSE CONTENT --></div><!-- CLOSE SCROLLER --></div><!-- BOTTOM BANNER --><div style="width:506px;height:16px;background:linear-gradient(45deg,#094456,rgba(46, 111, 149, 1) 60%);border:2px solid #92fffa;border-radius:5px;border-top-right-radius:0px;margin:-7px 0px 0px;z-index:2;position:relative;"></div><!-- CORNER --><div style="width:50px;height:50px;background:transparent;margin:-91px 0px 0px 163px;z-index:2;position:relative;"><!-- DIAGONAL --><div style="width:63.5px;height:2px;transform:rotate(135deg);background:#92fffa;margin:48px 0px 0px 0px;"></div><!-- COVERUP --><div style="width:0px;height:0px;border-bottom:48px solid #2e6f95;border-left:48px solid transparent;background:transparent;margin:-18px 0px 0px 1px;"></div><!-- CLOSE CORNER --></div><!-- LABEL --><div style="width:147px;height:48px;background:linear-gradient(-165deg,#60a0c4,#2e6f95 50%);margin:-75px 0px 0px 361px;border-top:2px solid #92fffa;border-right:2px solid #92fffa;border-top-right-radius:5px;border-top-left-radius:10px;z-index:2;position:relative;"><!-- LABEL TEXT --><div style="width:148px;height:25px;margin:10px 0px 0px;font-size:14px;line-height:26px;font-variant:small-caps;z-index:2;position:relative;">[ Logs ]<!-- CLOSE LABEL TEXT --></div><!-- CLOSE LABEL --></div><!-- CLOSE 5 --></div><!-- CLOSE CONTAINER --></div><!-- RIGHT PANEL --><div style="width:250px;height:440px;float:right;">
+
+
+<!-- GIF --><img src="static/DD35/images/DDwallpaper.jpg" style="width:225px;height:125px;margin:30px 0px 30px;border-right:1px solid #92fffa;border-top:1px solid #92fffa;box-shadow:0px 0px 5px 2px #92fffa;">
+
+
+<!-- NAVIGATION --><div style="width:235px;height:250px;background:linear-gradient(to top,rgba(146,255,250,0.4),rgba(0,170,185,0.4),rgba(96,160,196,0.4));float:right;border:2px solid #92fffa;border-top-left-radius:90px;margin-right:5px;"><!-- NAVIGATION CORNER --><div style="width:0px;height:0px;border-top:55px solid #92fffa;border-right:55px solid transparent;float:left;margin:5px 0px 0px 5px;"><div style="width:0px;height:0px;border-top:60px solid #010101;border-right:61px solid transparent;margin:-61px 0px 0px -2px;"><!-- CLOSE NAVIGATION CORNER --></div></div><!-- BIO BUTTON --><a href="#5" style="text-decoration:none;color:#fff;"><div style="width:60px;height:60px;background:radial-gradient(circle,#f00 30%,#c70000 50%,#5a4355 90%);float:left;margin:35px 0px 0px -20px;line-height:60px;border-radius:50%;box-shadow:0px 0px 5px 2px #92fffa;font-variant:small-caps;font-weight:bold;">Bio</div></a>
+
+
+<!-- ICON --><img src="static/DD35/images/DDwallpaper.jpg" style="border:3px solid transparent;height:100px;width:100px;outline:1px solid #92fffa;margin:5px 15px 0px 0px;float:right;">
+
+
+<!-- FLOAT CLEAR --><div style="clear:both;"></div><!-- BUTTONS --><div style="line-height:25px;font-size:16px;font-variant:small-caps;margin:10px 0px 0px 0px;"><a href="#1" style="text-decoration:none;color:#fff;"><div style="width:200px;height:25px;border-radius:5px;background:rgba(46,111,149,0.5);margin:0px 0px 5px;border:1px solid transparent;box-shadow:0px 0px 4px 1px #92fffa;">Attributs</div></a><a href="#2" style="text-decoration:none;color:#fff;"><div style="width:200px;height:25px;border-radius:5px;background:rgba(46,111,149,0.5);margin:0px 0px 5px;border:1px solid transparent;box-shadow:0px 0px 4px 1px #92fffa;">Equipement / Inventaire</div></a><a href="#3" style="text-decoration:none;color:#fff;"><div style="width:200px;height:25px;border-radius:5px;background:rgba(46,111,149,0.5);margin:0px 0px 5px;border:1px solid transparent;box-shadow:0px 0px 4px 1px #92fffa;">Compétences</div></a><a href="#4" style="text-decoration:none;color:#fff;"><div style="width:200px;height:25px;border-radius:5px;background:rgba(46,111,149,0.5);margin:0px 0px 5px;border:1px solid transparent;box-shadow:0px 0px 4px 1px #92fffa;">Sorts</div></a><!-- CLOSE BUTTONS --></div><!-- CLOSE NAVIGATION --></div><!-- CLOSE RIGHT PANEL --></div><!-- CLOSE MASTER --></div><!-- CREDIT - DO NOT REMOVE --><div style="width:770px;text-align:right;padding-right:30px;opacity:0.7;color:#000;font-size:11px;letter-spacing:1px;margin-top:5px;">code by <a href="http://morethancostume.insanejournal.com/" style="color:#3D66B0;">morethancostume</a></div></lj-cut></center></lj-raw>
+
+<!-- MASTER --><div style="float:right;width:800px;height:950px;background:url('{% static 'DD35/images/rightbgrd.jpg' %}');font-family:andale mono;font-size:14px;color:#fff;box-shadow:0px 0px 10px 1px #000,0px 0px 5px 5px #92fffa;margin-top:0px;"><!-- CONTAINER --><div style="width:800px;height:800px;float:left;margin:10px 0px 0px 10px;overflow:hidden;">
+{% for chatroom in chatrooms.all %}
+			<div class="container">
+    		<button class="btn btn-warning btn-sm" id="room" hrefonclick="return ChangeChat( {{ chatroom.name }} )">
+				{{ chatroom.name }}</button>
+			</div>
+
+{% endfor %}
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="//js.pusher.com/4.0/pusher.min.js"></script>
+<style>
+        .chat
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.chat li
+{
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #B3A9A9;
+}
+
+.chat li.left .chat-body
+{
+    margin-left: 60px;
+}
+
+.chat li.right .chat-body
+{
+    margin-right: 60px;
+}
+
+.chat li .chat-body p
+{
+    margin: 0;
+    color: #777777;
+}
+
+.panel .slidedown .glyphicon, .chat .glyphicon
+{
+    margin-right: 5px;
+}
+
+.panel-body
+{
+    overflow-y: scroll;
+    height: 250px;
+}
+
+::-webkit-scrollbar-track
+{
+     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+}
+
+.pull-left
+{
+	padding-left:50px;
+	padding-right:0;
+	text-align:left;
+	border-left:5px solid
+}
+
+.margin-left
+{
+	margin-left: 40px;
+
+
+
+
+}
+
+
+
+
+    </style>
+<body>
+{% for chatroom in chatrooms.all %}
+	<a name="{{ chatroom.name }}"></a>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<span class="glyphicon glyphicon-comment"></span> {{ chatroom.name }}
+					</div>
+					<div class="panel-body">
+				<!-- ul element holding chat messages -->
+						<ul class="chat" id="chat">
+						</ul>
+					</div>
+					<div class="panel-footer">
+						<div class="input-group">
+			<!-- text imput fot the messages to be typed into -->
+							<input id="btn-input" class="form-control input-sm" placeholder="Type your message here..." type="text" onkeypress="return PostMessage(event)">
+							<span class="input-group-btn">
+			<!--- send button for the chat box -->
+								<button class="btn btn-warning btn-sm" id="btn-chat">
+									Send</button>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endfor %}
+
+ 	<script src="{% static 'DD35/index.js' %}"></script>
+
+
+
+<!--<input type="hidden" id="user" name="username" value="{{ user.username }}">-->
+
+	<div style="width:600px;height:400px;float:left;margin:10px 0px 0px 10px;overflow:hidden;">
+		<div class="panel panel-default">
+  			<div class="panel-body" style="background:rgba(0,0,0,1);opacity:0.5;">
+    			Basic panel example
+  			</div>
+		</div>
+	</div>
+
+</body>
+
+
+
+</div>
+
+</div>

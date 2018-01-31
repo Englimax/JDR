@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
-default_image_src = "no_image.png"
+from django.db import models
 
 
 class Player(User):
-    pass
+    short_name = models.CharField(max_length=30)

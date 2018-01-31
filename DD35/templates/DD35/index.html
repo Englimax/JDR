@@ -13,7 +13,7 @@
 <script src="{% static 'DD35/index.js' %}"></script>
 
 <input type="hidden" id="user" name="username" value="{{ user.username }}">
-<input type="hidden" id="currentChannel" value="1">
+<input type="hidden" id="currentChannel" value="">
 
 <body>
 
@@ -222,9 +222,19 @@
                     </div>
                     <div class="panel-footer">
                         <div class="input-group">
-                            <input id="btn-input" class="form-control input-sm" placeholder="Type your message here..." type="text" onkeypress="return PostMessage(event)">
+                            <input
+                                    id="btn-input-{{ chatroom.id }}"
+                                    class="form-control input-sm"
+                                    placeholder="Type your message here..."
+                                    type="text"
+                                    onkeypress="return PostMessageIfEnter(event, '{{ chatroom.id }}')"
+                            >
                             <span class="input-group-btn">
-                                <button class="btn btn-warning btn-sm" id="btn-chat">Send</button>
+                                <button
+                                        class="btn btn-warning btn-sm"
+                                        id="btn-chat-{{ chatroom.id }}"
+                                        onclick="return PostMessage('{{ chatroom.id }}')"
+                                >Send</button>
                             </span>
                         </div>
                     </div>

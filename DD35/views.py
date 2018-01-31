@@ -41,7 +41,8 @@ def broadcast(request):
     message = request.POST['message']
     chatroom = ChatRoom.objects.get(id=1)
     message_save = Message.objects.create(room = chatroom, sender=user, message=message)
-    pusher.trigger(u'my-channel', u'my-event', {u'name': request.user.username, u'message': message})
+    message_save.save()
+    pusher.trigger(str(request.POST['channel']), u'my-event', {u'name': request.user.username, u'message': message})
     return HttpResponse("done");
 
 

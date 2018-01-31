@@ -1,16 +1,23 @@
 p
 {
-    color: green;
-
+    color: black;
+    font-family: Apple Chancery, cursive;
 }
 
 h1
 {
-    color: blue;
-
+    color: black;
+    font-family: Apple Chancery, cursive;
 }
 
 
 body {
     background: white url("images/DDwallpaper.jpg") left top;
+    font-family: Apple Chancery, cursive;
+}
+
+td {
+    font-family: Apple Chancery, cursive;
+
+
 }

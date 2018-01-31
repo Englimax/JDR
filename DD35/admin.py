@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Player, Campaign, BaseItem, Attribute, SkillInventory, PlayedCharacter, VariousModificator, Dons, \
-                    Spell, SpellUsage, SpellInventory, Item, Pouch, ItemInventory, Weapon, Armor
+                    Spell, SpellUsage, SpellInventory, Item, Pouch, ItemInventory, Weapon, Armor, ChatRoom, Message
 
 admin.site.register(Player)
 admin.site.register(Campaign)
@@ -18,3 +18,5 @@ admin.site.register(Pouch)
 admin.site.register(ItemInventory)
 admin.site.register(Weapon)
 admin.site.register(Armor)
+admin.site.register(ChatRoom)
+admin.site.register(Message)

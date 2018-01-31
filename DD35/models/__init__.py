@@ -14,4 +14,6 @@ from .ItemInventory import ItemInventory
 from .Weapon import Weapon
 from .Armor import Armor
 from .Player import Player
-
+from .Room import Room
+from .Message import Message
+from .ChatRoom import ChatRoom

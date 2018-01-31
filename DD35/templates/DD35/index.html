@@ -13,6 +13,7 @@
 <script src="{% static 'DD35/index.js' %}"></script>
 
 <input type="hidden" id="user" name="username" value="{{ user.username }}">
+<input type="hidden" id="currentChannel" value="1">
 
 <body>
 
@@ -216,7 +217,7 @@
                         <span class="glyphicon glyphicon-comment"></span> {{ chatroom.name }}
                     </div>
                     <div class="panel-body">
-                        <ul class="chat" id="chat">
+                        <ul class="chat" id="chatroom-{{ chatroom.id }}-chat">
                         </ul>
                     </div>
                     <div class="panel-footer">

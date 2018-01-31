@@ -6,7 +6,8 @@ function PostMessage(e) {
                 url: 'ajax/chat/',
                 data: {
                 'message': message,
-                'user': document.getElementById("user").value
+                'user': document.getElementById("user").value,
+                'channel': document.getElementById("currentChannel").value
                 },
                 success: function (data) {
                     $('#btn-input').val('');
@@ -20,10 +21,10 @@ function PostMessage(e) {
 function ChangeChat(chatId, chatName) {
     $('.chatroom').addClass('invisible')
     $('#chatroom-'.concat(chatId)).removeClass('invisible')
+    $('currentChannel').value = chatId.toString()
     var pusher = new Pusher('e35aa2ec9d8ab3ac21ce', {cluster: 'eu', encrypted: true});
-    var my_channel = pusher.subscribe(chatName);
+    var my_channel = pusher.subscribe(chatId.toString());
     my_channel.bind("my-event", function (data) {
-        // declare a variable new_message to hold the new chat messages
         var new_message = `<li class="left clearfix"><span class="chat-img pull-left">
                             <img src="http://placehold.it/50/55C1E7/fff&text=`+data.name+`" alt="User Avatar" class="img-circle">
                         </span>
@@ -33,8 +34,7 @@ function ChangeChat(chatId, chatName) {
                                 </p>
                             </div>
                         </li>`;
-         //append the new message to the ul holding the chat messages
-        $('#chat').append(new_message);
+        $('#chatroom-'.concat(chatId).concat('-chat')).append(new_message);
     });
 }
 
@@ -63,13 +63,13 @@ $(document).ready(function(){
     $("#btn-chat").click(function(){
 //get the currently typed message
         var message = $('#btn-input').val();
-        <!--Ajouter une fonction qui introduit des balises br pour couper le message sur plusieurs lignes lorsqu'il est trop long-->
         if (message){
             $.post({
                 url: 'ajax/chat/',
                 data: {
                 'message': message,
-                'user': document.getElementById("user").value
+                'user': document.getElementById("user").value,
+                'channel': document.getElementById("currentChannel").value
                 },
                 success: function (data) {
 

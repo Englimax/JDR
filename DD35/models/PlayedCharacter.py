@@ -33,11 +33,11 @@ class PlayedCharacter(models.Model):
     weight = models.IntegerField(default=75)
     eyes = models.CharField(max_length=50)
     hair = models.CharField(max_length=50)
-    attributes = models.ForeignKey(Attribute, on_delete=models.CASCADE)
-    skills = models.ForeignKey(SkillInventory, on_delete=models.CASCADE)
-    inventory = models.ForeignKey(ItemInventory, on_delete=models.CASCADE)
-    various_mod = models.ForeignKey(VariousModificator, on_delete=models.CASCADE)
-    spells = models.ForeignKey(SpellInventory, on_delete=models.CASCADE)
+    attributes = models.OneToOneField(Attribute, on_delete=models.CASCADE, related_name='player')
+    skills = models.OneToOneField(SkillInventory, on_delete=models.CASCADE, related_name='player')
+    inventory = models.OneToOneField(ItemInventory, on_delete=models.CASCADE, related_name='player')
+    various_mod = models.OneToOneField(VariousModificator, on_delete=models.CASCADE, related_name='player')
+    spells = models.OneToOneField(SpellInventory, on_delete=models.CASCADE, related_name='player')
 
     def jsonified(self):
         return {

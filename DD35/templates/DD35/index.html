@@ -68,7 +68,7 @@
 
 
 
-<!-- 2 --><a name="2"></a><div style="width:550px;height:800px;padding:10px 10px 0px;"><!-- SCROLLER TOP BORDER --><div style="width:475px;height:0px;border-top:2px solid #92fffa;float:left;margin-left:10px;box-shadow:0px 0px 5px 1px #fff;"><!-- CLOSE SCROLLER TOP BORDER --></div><!-- SCROLLER BOX --><div style="width:490px;height:775px;overflow:auto;padding:0px 10px;"><!-- CONTENT --><div style="width:451px;min-height:100%;padding:10px 10px 45px;border:2px solid #92fffa;border-top:none;box-shadow:0px 0px 5px 1px #fff;background:rgba(24,32,45,0.6);z-index:1;position:relative;text-align:left;">
+<!-- 2 --><a name="2"></a><div style="width:550px;height:800px;padding:10px 10px 0px;"><!-- SCROLLER TOP BORDER --><div style="width:520px;height:0px;border-top:2px solid #92fffa;float:left;margin-left:10px;box-shadow:0px 0px 5px 1px #fff;"><!-- CLOSE SCROLLER TOP BORDER --></div><!-- SCROLLER BOX --><div style="width:520px;height:775px;overflow:auto;padding:0px 10px;"><!-- CONTENT --><div style="width:500px;min-height:100%;padding:10px 10px 45px;border:2px solid #92fffa;border-top:none;box-shadow:0px 0px 5px 1px #fff;background:rgba(24,32,45,0.6);z-index:1;position:relative;text-align:left;">
 
 <!-- TABLE --><table style="clear:both;width:450px;color:#fff;font-size:14px;font-variant:small-caps;letter-spacing:1px;" cellspacing="10px"><tr><td style="width:150px;text-align:center;padding-right:5px;box-shadow:0px 0px 2px 1px #92fffa;" valign="top">Objet</td><td style="box-shadow:0px 0px 2px 1px #92fffa;">
 
@@ -91,43 +91,31 @@
 
 
 
-<!-- 3 --><a name="3"></a><div style="width:510px;height:800px;padding:10px 10px 0px;"><!-- SCROLLER TOP BORDER --><div style="width:475px;height:0px;border-top:2px solid #92fffa;float:left;margin-left:10px;box-shadow:0px 0px 5px 1px #fff;"><!-- CLOSE SCROLLER TOP BORDER --></div><!-- SCROLLER BOX --><div style="width:490px;height:775px;overflow:auto;padding:0px 10px;"><!-- CONTENT --><div style="width:451px;min-height:100%;padding:10px 10px 45px;border:2px solid #92fffa;border-top:none;box-shadow:0px 0px 5px 1px #fff;background:rgba(24,32,45,0.6);z-index:1;position:relative;text-align:left;">
+<!-- 3 --><a name="3"></a><div style="width:550px;height:800px;padding:10px 10px 0px;"><!-- SCROLLER TOP BORDER --><div style="width:520px;height:0px;border-top:2px solid #92fffa;float:left;margin-left:10px;box-shadow:0px 0px 5px 1px #fff;"><!-- CLOSE SCROLLER TOP BORDER --></div><!-- SCROLLER BOX --><div style="width:520px;height:775px;overflow:auto;padding:0px 10px;"><!-- CONTENT --><div style="width:500px;min-height:100%;padding:10px 10px 45px;border:2px solid #92fffa;border-top:none;box-shadow:0px 0px 5px 1px #fff;background:rgba(24,32,45,0.6);z-index:1;position:relative;text-align:left;">
 
-<span style="font-size:16px;font-weight:bold;font-variant:small-caps;letter-spacing:1px;">
-	Special Skill
-</span>
-	Description<p>
+    <!-- TABLE --><table style="clear:both;width:450px;color:#fff;font-size:14px;font-variant:small-caps;letter-spacing:1px;" cellspacing="10px"><tr><td style="width:150px;text-align:center;padding-right:5px;box-shadow:0px 0px 2px 1px #92fffa;" valign="top">Compétence</td><td style="box-shadow:0px 0px 2px 1px #92fffa;">
 
-<span style="font-size:16px;font-weight:bold;font-variant:small-caps;letter-spacing:1px;">
-	Racial Ability
-</span>
-	Description<p>
+	<p style="align:center"> Niveau </p>
 
-<span style="font-size:16px;font-weight:bold;font-variant:small-caps;letter-spacing:1px;">
-	Hidden Talent
-</span>
-	Description<p>
 
-<span style="font-size:16px;font-weight:bold;font-variant:small-caps;letter-spacing:1px;">
-	Skill
-</span>
-	Description<p>
+{% for item in character.skills.skills.all %}
 
-<span style="font-size:16px;font-weight:bold;font-variant:small-caps;letter-spacing:1px;">
-	Skill
-</span>
-	Description<p>
+    </td></tr><tr style=><td style="width:150px;text-align:center;padding-right:5px;box-shadow:0px 0px 2px 1px #92fffa;" valign="top">
 
-<span style="font-size:16px;font-weight:bold;font-variant:small-caps;letter-spacing:1px;">
-	Skill
-</span>
-	Description<p>
+	{{ item.name }}: </br>
+		<!--<figure style="float:left;margin:0px 6px 10px 0px;text-align:center;">
+			<img src="{% static 'DD35/images/no_image.png' %}" style="width:150px;height:200px;float:right;margin:10px;" alt="No image :("/><figcaption>No image</figcaption></figure>
+-->
+	</td><td style="box-shadow:0px 0px 2px 1px #92fffa;text-align:center;">
+        {{ item.value }}
 
-<!-- CLOSE CONTENT --></div><!-- CLOSE SCROLLER --></div><!-- BOTTOM BANNER --><div style="width:506px;height:16px;background:linear-gradient(45deg,#094456,rgba(46, 111, 149, 1) 60%);border:2px solid #92fffa;border-radius:5px;border-top-right-radius:0px;margin:-7px 0px 0px;z-index:2;position:relative;"></div><!-- CORNER --><div style="width:50px;height:50px;background:transparent;margin:-91px 0px 0px 163px;z-index:2;position:relative;"><!-- DIAGONAL --><div style="width:63.5px;height:2px;transform:rotate(135deg);background:#92fffa;margin:48px 0px 0px 0px;"></div><!-- COVERUP --><div style="width:0px;height:0px;border-bottom:48px solid #2e6f95;border-left:48px solid transparent;background:transparent;margin:-18px 0px 0px 1px;"></div><!-- CLOSE CORNER --></div><!-- LABEL --><div style="width:147px;height:48px;background:linear-gradient(-165deg,#60a0c4,#2e6f95 50%);margin:-75px 0px 0px 361px;border-top:2px solid #92fffa;border-right:2px solid #92fffa;border-top-right-radius:5px;border-top-left-radius:10px;z-index:2;position:relative;"><!-- LABEL TEXT --><div style="width:148px;height:25px;margin:10px 0px 0px;font-size:14px;line-height:26px;font-variant:small-caps;z-index:2;position:relative;">[ Skills ]<!-- CLOSE LABEL TEXT --></div><!-- CLOSE LABEL --></div><!-- CLOSE 3 --></div>
+{% endfor %}
+
+<!-- CLOSE TABLE --></td></tr></table><!-- CLOSE CONTENT --></div><!-- CLOSE SCROLLER --></div><!-- BOTTOM BANNER --><div style="width:506px;height:16px;background:linear-gradient(45deg,#094456,rgba(46, 111, 149, 1) 60%);border:2px solid #92fffa;border-radius:5px;border-top-right-radius:0px;margin:-7px 0px 0px;z-index:2;position:relative;"></div><!-- CORNER --><div style="width:50px;height:50px;background:transparent;margin:-91px 0px 0px 163px;z-index:2;position:relative;"><!-- DIAGONAL --><div style="width:63.5px;height:2px;transform:rotate(135deg);background:#92fffa;margin:48px 0px 0px 0px;"></div><!-- COVERUP --><div style="width:0px;height:0px;border-bottom:48px solid #2e6f95;border-left:48px solid transparent;background:transparent;margin:-18px 0px 0px 1px;"></div><!-- CLOSE CORNER --></div><!-- LABEL --><div style="width:147px;height:48px;background:linear-gradient(-165deg,#60a0c4,#2e6f95 50%);margin:-75px 0px 0px 361px;border-top:2px solid #92fffa;border-right:2px solid #92fffa;border-top-right-radius:5px;border-top-left-radius:10px;z-index:2;position:relative;"><!-- LABEL TEXT --><div style="width:148px;height:25px;margin:10px 0px 0px;font-size:14px;line-height:26px;font-variant:small-caps;z-index:2;position:relative;">[ Skills ]<!-- CLOSE LABEL TEXT --></div><!-- CLOSE LABEL --></div><!-- CLOSE 3 --></div>
 
 
 
-<!-- 4 --><a name="4"></a><div style="width:510px;height:800px;padding:10px 10px 0px;"><!-- SCROLLER TOP BORDER --><div style="width:475px;height:0px;border-top:2px solid #92fffa;float:left;margin-left:10px;box-shadow:0px 0px 5px 1px #fff;"><!-- CLOSE SCROLLER TOP BORDER --></div><!-- SCROLLER BOX --><div style="width:490px;height:775px;overflow:auto;padding:0px 10px;"><!-- CONTENT --><div style="width:451px;min-height:100%;padding:10px 10px 45px;border:2px solid #92fffa;border-top:none;box-shadow:0px 0px 5px 1px #fff;background:rgba(24,32,45,0.6);z-index:1;position:relative;text-align:left;">
+<!-- 4 --><a name="4"></a><div style="width:550px;height:800px;padding:10px 10px 0px;"><!-- SCROLLER TOP BORDER --><div style="width:520px;height:0px;border-top:2px solid #92fffa;float:left;margin-left:10px;box-shadow:0px 0px 5px 1px #fff;"><!-- CLOSE SCROLLER TOP BORDER --></div><!-- SCROLLER BOX --><div style="width:520px;height:775px;overflow:auto;padding:0px 10px;"><!-- CONTENT --><div style="width:500px;min-height:100%;padding:10px 10px 45px;border:2px solid #92fffa;border-top:none;box-shadow:0px 0px 5px 1px #fff;background:rgba(24,32,45,0.6);z-index:1;position:relative;text-align:left;">
 
 	General description/overview of your character's personality in paragraph form.<p><hr style="color:#92fffa;">
 
@@ -165,7 +153,7 @@
 
 
 
-<!-- 5 --><a name="5"></a><div style="width:510px;height:800px;padding:10px 10px 0px;"><!-- SCROLLER TOP BORDER --><div style="width:475px;height:0px;border-top:2px solid #92fffa;float:left;margin-left:10px;box-shadow:0px 0px 5px 1px #fff;"><!-- CLOSE SCROLLER TOP BORDER --></div><!-- SCROLLER BOX --><div style="width:490px;height:775px;overflow:auto;padding:0px 10px;"><!-- CONTENT --><div style="width:451px;min-height:100%;padding:10px 10px 45px;border:2px solid #92fffa;border-top:none;box-shadow:0px 0px 5px 1px #fff;background:rgba(24,32,45,0.6);z-index:1;position:relative;font-size:13px;text-align:left;">
+<!-- 5 --><a name="5"></a><div style="width:550px;height:800px;padding:10px 10px 0px;"><!-- SCROLLER TOP BORDER --><div style="width:520px;height:0px;border-top:2px solid #92fffa;float:left;margin-left:10px;box-shadow:0px 0px 5px 1px #fff;"><!-- CLOSE SCROLLER TOP BORDER --></div><!-- SCROLLER BOX --><div style="width:520px;height:775px;overflow:auto;padding:0px 10px;"><!-- CONTENT --><div style="width:500px;min-height:100%;padding:10px 10px 45px;border:2px solid #92fffa;border-top:none;box-shadow:0px 0px 5px 1px #fff;background:rgba(24,32,45,0.6);z-index:1;position:relative;font-size:13px;text-align:left;">
 
 	Here's a space for additional notes, or even actual 'logs' if you want. You could even use it as a thread tracker. The icons below the horizontal line are meant to be used to keep track of your character's relationships.
 

@@ -17,3 +17,4 @@ from .Player import Player
 from .Room import Room
 from .Message import Message
 from .ChatRoom import ChatRoom
+from .Skill import Skill

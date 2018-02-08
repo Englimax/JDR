@@ -38,7 +38,6 @@ function InitializePusher(chatId, chatName) {
     var pusher = new Pusher('e35aa2ec9d8ab3ac21ce', {cluster: 'eu', encrypted: true});
     var my_channel = pusher.subscribe(chatId.toString());
     my_channel.bind("my-event", function (data) {
-        console.log("a")
             var new_message = `
                 <li class="left clearfix"><span class="chat-img pull-left">
                     <img src="http://placehold.it/50/55C1E7/fff&text=`+data.name+`" alt="User Avatar" class="img-circle">

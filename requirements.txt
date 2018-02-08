@@ -2,4 +2,4 @@ django
 pusher
 django_rest_framework
 django-bootstrap3
-pillow
+django-angular
